@@ -10,7 +10,7 @@ const Navbar = () => {
 
     const [cartHover, setCartHover] = useState(false);
     const dispatch = useDispatch()
-    const counter = useSelector(state => state.counterReducer)
+   
     const cartState = useSelector(state => state.cartReducer)
 
     const hoverHandler = () => {

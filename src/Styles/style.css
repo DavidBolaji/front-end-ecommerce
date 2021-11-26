@@ -444,7 +444,7 @@
   border-color: 1px solid white;
 }
 
-.shop .carousel .scroll .small_img .overlay {
+.shop .carousel .scroll .small_img .overlaye {
   position: absolute;
   border-color: none;
   width: 96%;
@@ -714,6 +714,11 @@
   cursor: pointer;
   border: 1px solid #ff7d1a;
   border-radius: 5px;
+  border: none;
+}
+
+.shop .btn button:hover {
+  background-color: rgba(255, 125, 26, 0.872);
 }
 
 @media only screen and (max-width: 869px) {

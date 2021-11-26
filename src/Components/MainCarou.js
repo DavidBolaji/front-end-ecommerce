@@ -12,12 +12,17 @@ import { setLightbox } from './../Store/Action/lightboxObjAction';
 
 const MainCarou = () => {
     const [id, setId] = useState('01');
-    const [loaded, setLoaded] = useState(false);
+    // dimension tracker
     const [width, setWidth] = useState(window.innerWidth);
+    // set image
     const [img, setImg] = useState(Product1)
+    // reducer dispatcher
     const dispatch = useDispatch();
+    // active image id from reducer
     const activeId = useSelector(state => state.lightboxObjReducer.id)
+    // current product object
     const product = useSelector(state => state.lightboxObjReducer)
+    // increment check
     const checkInc = (num) => {
         if (num === (datas.length - 1)) {
             num = 0;
@@ -26,7 +31,7 @@ const MainCarou = () => {
         }
         return num;
     }
-
+    // decrement check
     const checkDec = (num) => {
         if (num === 0) {
             num = (datas.length - 1);
@@ -36,33 +41,40 @@ const MainCarou = () => {
         return num;
     }
     
-
+    // display next carousel item
     const nextHandler = () => {
-        
+        // initialize index
         let index;
+        // loop through data to find active product
         for(let i = 0; i < datas.length; i++){
             if(datas[i].id === activeId){
                 index = i;
                 break;
             }
         }
+        // get the next carousel
        let val = checkInc(index)
+        // make product active product
        dispatch(setLightbox(datas[val]))
     }
-
+    // display prev carousel item 
     const prevHandler = () => {
+        // initialize index
         let index;
+        // loop through to find active carousel 
         for(let i = 0; i < datas.length; i++){
             if(datas[i].id === activeId){
                 index = i;
                 break;
             }
         }
+        // return previous index
        let val = checkDec(index)
+        // set item to active product
        dispatch(setLightbox(datas[val]))
     }
 
-
+    // event listener to track window resize 
     useEffect(() => {
         const handleWindowResize = () => setWidth(window.innerWidth)
         
@@ -71,40 +83,48 @@ const MainCarou = () => {
         return () => window.removeEventListener("resize", handleWindowResize);
     }, [])
 
+    // making carousel active
     useEffect(() => {
         setActive(product.id)
     }, [])
 
 
-
-     const clickHandler = (img,id) => {
-        console.log(img,id);
+    // handle lightbox display 
+    const clickHandler = (img,id) => {
         dispatch(lightboxAction())
     }
 
-     const setActive = (id) => {
+    // adding border on active product
+    const setActive = (id) => { // get id
+        // return element with id
         const imgId = datas.filter(data => data.id === id )
+        // set element with id as active
         dispatch(setLightbox({id: imgId[0].id, img:imgId[0].img}))
+        // set internal id
         setId(imgId[0].id)
+        // set internal img
         setImg(imgId[0].img); 
     }
 
+    // carousal list product
     const smlCarou = datas.map(data => {
+        // let current element be false
         let current = false
+        // find element with active id
         if (data.id === product.id) {
             current = true
         } 
-
-        return <CarouselSmall
-                    key={data.id} 
-                    active={current}  
-                    id={data.id} 
-                    onClick={() => setActive(data.id)} 
-                    src={data.img}
-                    active={current} 
-                /> 
+        // render carousel
+        return <CarouselSmall 
+            key={data.id} 
+            active={current} 
+            id={data.id} 
+            onClick={() => setActive(data.id)} 
+            src={data.img} 
+            active={current} 
+        /> 
     })
-    
+
     return (
         <div className="carousel">
             <div className="focus" onClick={() => width > 850 && clickHandler(img,id)}>
@@ -124,4 +144,4 @@ const MainCarou = () => {
     )
 }
 
-export default MainCarou
+export default MainCarou;

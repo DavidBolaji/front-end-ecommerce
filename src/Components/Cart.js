@@ -6,8 +6,8 @@ import { clearCart } from './../Store/Action/cartAction';
 
 const Cart = () => {
     // const counter = useSelector(state => state.counterReducer)
-    const cartState = useSelector(state => state.cartReducer)
-    const dispatch = useDispatch()
+    const cartState = useSelector(state => state.cartReducer);
+    const dispatch = useDispatch();
     
     return (
         <div className="cart">
@@ -18,7 +18,7 @@ const Cart = () => {
             {!cartState.counter &&<div className="empty_body">
                 <p>Cart is Empty</p>
             </div>}
-            {cartState.counter && <div className="cart_body">
+            {cartState.counter ? <div className="cart_body">
                 <div className="item">
                     <div className="item_img">
                         <img src={Product1} alt="shoe" />
@@ -34,7 +34,7 @@ const Cart = () => {
                 <div className="checkout">
                     <button>checkout</button>
                 </div>
-            </div>}
+            </div>: null}
         </div>
     )
 }

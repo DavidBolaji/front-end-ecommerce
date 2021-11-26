@@ -95,7 +95,7 @@
                     border-color: 1px solid white;
                 }
 
-                .overlay {
+                .overlaye {
                     position: absolute;
                     border-color: none;
                     width: 96%;
@@ -275,13 +275,17 @@
             flex: 0.65;
             display: flex;
             align-items: center;
-            
             justify-content: center;
             background-color: $colorOrange;
             color: $colorWhite;
             cursor: pointer;
             border:1px solid $colorOrange;
             border-radius: 5px;
+            border: none;
+
+            &:hover {
+                background-color: hsla(26, 100%, 55%, 0.872);
+            }
 
             @media only screen and (max-width: 869px) {
                 width: 100%;

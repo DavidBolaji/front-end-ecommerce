@@ -2,15 +2,15 @@ import React from 'react';
 import CartImg from '../Assets/images/icon-cart.svg';
 import { decrement, increment } from './../Store/Action/counterAction';
 import MainCarou from './MainCarou';
-import datas from './../Data/data';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from './../Store/Action/cartAction';
 
 
 
 const Shop = () => {
-    const counter = useSelector(state => state.counterReducer)
-    const dispatch = useDispatch()
+    const counter = useSelector(state => state.counterReducer);
+    const dispatch = useDispatch();
     
     
     return (
@@ -45,7 +45,7 @@ const Shop = () => {
                     <button onClick={() => dispatch(addToCart({counter: counter, price: 125 }))}>
                         <img src={CartImg} alt="cart_icon" />
                             <span>
-                            Add to cart
+                                Add to cart
                             </span> 
                     </button>
                 </div>

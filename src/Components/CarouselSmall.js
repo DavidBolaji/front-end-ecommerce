@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 
 const CarouselSmall = (props) => {
 
-    const [hover, setHover] = useState(false)
+    const [hover, setHover] = useState(false);
 
     const hoverHandler = () => {
-        setHover(prev => !prev)
+        setHover(prev => !prev);
     }
 
     const added = {
@@ -17,7 +17,7 @@ const CarouselSmall = (props) => {
     return (
         <React.Fragment>
             <div className='small_img' onClick={props.onClick}  onMouseEnter={hoverHandler} onMouseLeave={hoverHandler}>
-                {props.active || hover ? <div className="overlay" ></div> : null}
+                {props.active || hover ? <div className="overlaye" ></div> : null}
                 <img src={props.src} style={props.active ? added : {}}  alt={props.id} id={props.id}   />
             </div>
         </React.Fragment>

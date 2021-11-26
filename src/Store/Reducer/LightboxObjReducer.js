@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const data = {
     id: '01',
@@ -12,8 +12,8 @@ const lightboxObjReducer = (state=data,action) => {
             img: action.payload.img
         }
     }
-    return state
+    return state;
 }
 
-export default lightboxObjReducer
+export default lightboxObjReducer;
 

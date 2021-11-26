@@ -30,12 +30,12 @@ const URL = [
         anchor: '#contact'
     }
     
-]
+];
 
 const Sidebar = () => {
 
     const navState = useSelector(state => state.navReducer);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     
     return (
         <React.Fragment>
