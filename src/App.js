@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import Navbar from './Components/Navbar';
+import './Styles/style.css'
+import Shop from './Components/Shop';
+import LightBox from './Components/LightBox';
+import Sidebar from './Components/Sidebar';
+import { useSelector } from 'react-redux';
+
 
 function App() {
+  
+  const lightboxState = useSelector(state => state.lightBoxReducer)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      {lightboxState && <LightBox />}
+      <div className="container">
+          <Sidebar />
+          <Navbar />
+          <Shop />
+          
+      </div>
+    </React.Fragment>
   );
 }
 

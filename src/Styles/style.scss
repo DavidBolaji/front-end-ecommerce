@@ -1,0 +1,24 @@
+@import '../Variables/variabbles';
+@import './container';
+@import './navigation';
+@import './cart';
+@import './shop';
+@import './lightbox';
+@import './sidebar';
+
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.405);
+    width: 100vw;
+    cursor: pointer;
+    display: none;
+    @media only screen and (max-width: 869px) {
+       display: none;
+    }
+}

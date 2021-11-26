@@ -1,0 +1,12 @@
+.container {
+    font-family: $family;
+    width: 100vw;
+    background-color: $colorWhite;
+    padding-inline: 10%;
+
+    @media only screen and (max-width: 669px) {
+        scale: 1;
+        width: auto;
+        padding-inline: 0%;
+    }
+}
