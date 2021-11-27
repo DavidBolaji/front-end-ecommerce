@@ -4,6 +4,7 @@
     align-items: center;
     padding-inline:1%;
     @media only screen and (max-width: 869px) {
+        margin-top: 0px;
         flex-direction: column;
     }
 
@@ -23,9 +24,10 @@
             margin-bottom: 20px;
             border-radius: 10px;
             cursor: pointer;
+            
             @media only screen and (max-width: 869px) {
                 width: 550px;
-                margin-top: -40px;
+                margin-top: 0px;
             }
             
             img {
@@ -52,6 +54,7 @@
                 display: none;
                 @media only screen and (max-width: 869px) {
                     display: flex;
+                    left: 18%;
                 }
 
             }
@@ -73,6 +76,7 @@
                 display: none;
                 @media only screen and (max-width: 869px) {
                     display: flex;
+                    right: 18%;
                 }
             }
         }
@@ -113,11 +117,8 @@
                     height: 100%;
                     object-fit: cover;
                     border-radius: 10px;
-
                 }
-            }
-
-            
+            } 
         }
     }
 
@@ -127,7 +128,7 @@
         min-width: 400px;
 
         @media only screen and (max-width: 869px) {
-            padding: 0px 5% 0px 5% ;
+            padding: 2% 10%;
         }
 
         .tag {
@@ -149,17 +150,25 @@
             margin-bottom: 70px;
             @media only screen and (max-width: 869px) {
                 font-size: 2.15rem;
+                margin-bottom: 0px;
             }
         }
 
         .paragraph {
             transform: translateY(-40px);
+            @media only screen and (max-width: 869px) {
+                transform: translateY(0px);
+            }
+           
             .main_txt {
                 color: $colorDarkGrey;
                 font-weight: 700;
                 line-height: 30px;
                 word-spacing: 2px;
                 margin-bottom: 40px;
+                @media only screen and (max-width: 869px) {
+                    margin-bottom: 0px;
+                }
             }
 
             .price {
@@ -167,7 +176,9 @@
                 flex-direction: row;
                 align-items: center;
                 height: 10px;
-                
+                @media only screen and (max-width: 869px) {
+                    height: auto;
+                }
                 .amount {
                     color: $colorBlack;
                     font-size: 2em;
@@ -176,6 +187,7 @@
                 }
                 .percent {
                     display: flex;
+                   
                     justify-content: center;
                     align-items: center;
                     background-color: $colorPaleOrange;
@@ -183,18 +195,32 @@
                     font-weight: 700;
                     padding: 5px;
                     margin-top: 15px;
+                   
+                }
+
+                .striker {
+                    display: none;
+                    @media only screen and (max-width: 869px) {
+                        display: flex;
+                        flex: 1;
+                        justify-content: flex-end;
+                        text-decoration: line-through;
+                        color: $colorDarkGrey;
+                        font-family: $family;
+                    }
                 }
                
             }
 
             .strike {
+                height: 40px;
                 p {
                     color: $colorDarkGrey;
                     font-family: $family;
                     margin-bottom: 50px;
                     text-decoration: line-through;
                     @media only screen and (max-width: 869px) {
-                        transform: translate(80%,-140%);
+                        display: none;
                     }
                 }
             }
@@ -202,12 +228,13 @@
     }
 
     .btn {
-        transform: translateY(-60px);       
+        transform: translateY(-30px);       
         display: flex;
         align-items: center;
         justify-content:space-between;
         @media only screen and (max-width: 869px) {
             flex-direction: column;
+            transform: translateY(6px);
         }
         .btn_add {
             flex: 0.3;

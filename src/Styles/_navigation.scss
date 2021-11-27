@@ -8,11 +8,12 @@
     flex-direction: row;
     padding-bottom: 60px;
     border-bottom: 1px solid $colorBlueGrey;
+   
 
     @media only screen and (max-width: 969px) {
+        height: 9vh;
         justify-content: space-around;
         padding-bottom: 0px;
-        height: 12vh;
         border-bottom: none;
         // background-color: red;
         align-items: center;

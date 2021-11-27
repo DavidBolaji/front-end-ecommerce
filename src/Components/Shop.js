@@ -28,6 +28,9 @@ const Shop = () => {
                     <div className="price">
                         <p className="amount">$125.00</p>
                         <p className="percent">50%</p> 
+                        <div className="striker">
+                            <p>$250.00</p>
+                        </div>
                         
                     </div>
                     <div className="strike">

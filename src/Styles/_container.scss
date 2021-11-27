@@ -5,6 +5,9 @@
     padding-inline: 10%;
 
     @media only screen and (max-width: 669px) {
+        * {
+             overflow-x: hidden !important;
+        }
         scale: 1;
         width: auto;
         padding-inline: 0%;
