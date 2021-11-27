@@ -388,7 +388,6 @@
 
 .shop .carousel .focus img {
   width: 100%;
-  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -401,20 +400,17 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   width: 30px;
   height: 30px;
-  border-radius: 15px;
+  border-radius: 50%;
   display: none;
 }
 
 .shop .carousel .focus .left img {
-  scale: 0.4;
+  scale: 0.3;
 }
 
 @media only screen and (max-width: 869px) {
@@ -434,20 +430,17 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   width: 30px;
   height: 30px;
-  border-radius: 15px;
+  border-radius: 50%;
   display: none;
 }
 
 .shop .carousel .focus .right img {
-  scale: 0.4;
+  scale: 0.3;
 }
 
 @media only screen and (max-width: 869px) {
