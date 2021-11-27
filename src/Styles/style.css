@@ -39,9 +39,10 @@
 
 @media only screen and (max-width: 969px) {
   .navigation {
-    height: 9vh;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    height: 12vh;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
     padding-bottom: 0px;
     border-bottom: none;
     -webkit-box-align: center;
@@ -271,9 +272,12 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-flex: 0.6;
-        -ms-flex: 0.6;
-            flex: 0.6;
+    -webkit-box-flex: 0.5;
+        -ms-flex: 0.5;
+            flex: 0.5;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 }
 
