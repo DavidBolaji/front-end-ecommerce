@@ -416,6 +416,8 @@
 @media only screen and (max-width: 869px) {
   .shop .carousel .focus .left img {
     scale: 0.3;
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
   }
 }
 
@@ -452,6 +454,8 @@
 @media only screen and (max-width: 869px) {
   .shop .carousel .focus .right img {
     scale: 0.3;
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
   }
 }
 
@@ -736,6 +740,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media only screen and (max-width: 869px) {
@@ -754,7 +759,7 @@
   border: none;
   background-color: transparent;
   color: #ff7d1a;
-  outline: none;
+  outline-color: black;
   border: 0;
   padding: 0;
   font-weight: 700;
@@ -768,10 +773,24 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.shop .btn .btn_add .increment:active {
+  outline-style: none;
+}
+
+@media only screen and (max-width: 869px) {
+  .shop .btn .btn_add .increment:active {
+    outline-color: black;
+    border: 0;
+  }
 }
 
 @media only screen and (max-width: 869px) {
   .shop .btn .btn_add .increment {
+    outline: none;
+    border: 0;
     padding-right: 20px;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
