@@ -49,6 +49,9 @@
                 border-radius: 50%;
                 img {
                     scale: 0.3;
+                    @media only screen and (max-width: 869px) {
+                        scale: 0.3;
+                    }
                 }
                 display: none;
                 @media only screen and (max-width: 869px) {
@@ -71,6 +74,9 @@
                 border-radius: 50%;
                 img {
                     scale: 0.3;
+                    @media only screen and (max-width: 869px) {
+                        scale: 0.3;
+                    }
                 }
                 display: none;
                 @media only screen and (max-width: 869px) {
@@ -250,7 +256,9 @@
             .decrement {
                 border: none;
                 background-color: transparent;
+                outline: none;
                 color: $colorOrange;
+                border: 0;
                 padding: 0;
                 font-weight: 700;
                 font-size: 20px;
@@ -271,6 +279,8 @@
                 border: none;
                 background-color: transparent;
                 color: $colorOrange;
+                outline: none;
+                border: 0;
                 padding: 0;
                 font-weight: 700;
                 font-size: 20px;
