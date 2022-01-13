@@ -1,13 +1,38 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Navbar from './Components/Navbar';
 import './Styles/style.css'
 import Shop from './Components/Shop';
 import LightBox from './Components/LightBox';
 import Sidebar from './Components/Sidebar';
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { auth } from './Store/Action/AuthAction';
+import { setProd } from './Store/Action/productAction';
 
 function App() {
+  const dispatch = useDispatch();
+  const authenticate = useSelector(state => state.authReducer);  
+  useEffect(() => {
+
+      const login = async (cb) => {
+          const data = await fetch('http://localhost:5000/api/v1/users/login', {
+              method:'POST',
+              body: JSON.stringify({
+                  email: 'ologunlekodavid245@gmail.com',
+                  password: 'david1234'
+              }),
+              headers: {
+                  'Content-Type': 'application/json'
+                  // 'Content-Type': 'application/x-www-form-urlencoded',
+              },
+          })
+          const resp = await data.json()
+          cb(resp.token);
+      }
+      login((token) => {
+          dispatch(auth(token))
+      }) 
+      
+  }, [])
   
   const lightboxState = useSelector(state => state.lightBoxReducer)
   return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import CartImg from '../Assets/images/icon-cart.svg';
 import { decrement, increment } from './../Store/Action/counterAction';
+// import { auth } from './../Store/Action/AuthAction';
 import MainCarou from './MainCarou';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,8 +11,60 @@ import { addToCart } from './../Store/Action/cartAction';
 
 const Shop = () => {
     const counter = useSelector(state => state.counterReducer);
-    const dispatch = useDispatch();
-    
+    const activePrice = useSelector(state => state.lightboxObjReducer.price)
+    const authenticate = useSelector(state => state.authReducer);
+    const dispatch = useDispatch(); 
+
+    const addCartItem = async () => {
+        const prodId = '60aedf1f719956001508ef1a';
+        dispatch(addToCart({counter: counter, price: 125 }));
+        const add = await fetch(`http://localhost:5000/api/v1/cart/${prodId}`, {
+                method: 'POST',
+                headers: {
+                    Authorization : `Bearer ${authenticate}`
+                },
+                
+            })
+            const respAdd = await add.json()
+            console.log(respAdd);
+    }
+
+    const incre = async () => {
+
+        const prodId = '60aedf1f719956001508ef1a'
+        dispatch(increment())
+       
+        const quan = counter+1;
+       
+       
+        const data = await fetch(`http://localhost:5000/api/v1/cart/update/?id=${prodId}&quantity=${quan}`, {
+            method: 'PATCH',
+            headers: {
+                Authorization : `Bearer ${authenticate}`
+            },
+            
+        })
+        const resp = await data.json()
+        console.log(resp);
+    }
+
+    const decre = async () => {
+        const prodId = '60aedf1f719956001508ef1a'
+        dispatch(decrement())
+        if(counter > 0) {
+            const quan = counter-1;
+            const data = await fetch(`http://localhost:5000/api/v1/cart/update/?id=${prodId}&quantity=${quan}`, {
+                method: 'PATCH',
+                headers: {
+                    Authorization : `Bearer ${authenticate}`
+                },
+                
+            })
+            const resp = await data.json()
+            console.log(resp);
+        }
+    } 
+   
     
     return (
         <div className="shop">
@@ -26,7 +79,7 @@ const Shop = () => {
                     </p>
 
                     <div className="price">
-                        <p className="amount">$125.00</p>
+                        <p className="amount">${activePrice.toFixed(2)}</p>
                         <p className="percent">50%</p> 
                         <div className="striker">
                             <p>$250.00</p>
@@ -41,11 +94,11 @@ const Shop = () => {
 
                 <div className="btn">
                     <div className="btn_add">
-                        <button className="decrement" onClick={() => dispatch(decrement())}><b>-</b></button>
+                        <button className="decrement" onClick={decre}><b>-</b></button>
                         <span>{counter}</span>
-                        <button className="increment" onClick={() => dispatch(increment())}><b>+</b></button>
+                        <button className="increment" onClick={incre}><b>+</b></button>
                     </div>
-                    <button onClick={() => dispatch(addToCart({counter: counter, price: 125 }))}>
+                    <button onClick={addCartItem}>
                         <img src={CartImg} alt="cart_icon" />
                             <span>
                                 Add to cart

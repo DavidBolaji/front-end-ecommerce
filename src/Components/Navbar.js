@@ -9,17 +9,30 @@ import { toggleNav } from './../Store/Action/navAction';
 const Navbar = () => {
 
     const [cartHover, setCartHover] = useState(false);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
    
-    const cartState = useSelector(state => state.cartReducer)
+    const cartState = useSelector(state => state.cartReducer);
+    const authenticate = useSelector(state => state.authReducer);
 
     const hoverHandler = () => {
-        setCartHover(prev => !prev)
+        setCartHover(prev => !prev);
     }
 
     const toggleMenu = () => {
-        dispatch(toggleNav())
+        dispatch(toggleNav());
     }
+
+
+    const profile = async () => {
+        const data = await fetch(`http://localhost:5000/api/v1/users/me`, {
+            headers: {
+                Authorization : `Bearer ${authenticate}`
+            },
+        
+        })
+        const resp = await data.json()
+        console.log(resp);
+    }    
 
     return (
         <div className="navigation">
@@ -42,7 +55,7 @@ const Navbar = () => {
                     <img alt="cart_icon" src={CartImg} style={{cursor: 'pointer'}}/>
                     {cartHover && <Cart />}
                 </div>
-                <div className="profile">
+                <div className="profile" onClick={profile}>
                     <img alt="cart_icon" src={Avatar}/>
                 </div>
             </div>

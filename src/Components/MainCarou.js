@@ -7,10 +7,11 @@ import Previous from '../Assets/images/icon-previous.svg'
 import { useDispatch, useSelector } from 'react-redux';
 import { lightboxAction } from './../Store/Action/lightboxAction';
 import { setLightbox } from './../Store/Action/lightboxObjAction';
-
+import { setProd } from './../Store/Action/productAction';
 
 
 const MainCarou = () => {
+   
     const [id, setId] = useState('01');
     // dimension tracker
     const [width, setWidth] = useState(window.innerWidth);
@@ -22,7 +23,40 @@ const MainCarou = () => {
     const activeId = useSelector(state => state.lightboxObjReducer.id)
     // current product object
     const product = useSelector(state => state.lightboxObjReducer)
+
+    const products = useSelector(state => state.productReducer)
     // increment check
+    // const [products, setProducts] = useState([]);
+
+    // making carousel active
+    useEffect(() => {
+        const getProduct = async (cb) => {
+          const data = await fetch('http://localhost:5000/api/v1/products?page=4')
+          const resp = await data.json();
+          const newDoc = resp.doc.map((e) => {
+              return {
+                  id: e.id,
+                  img: e.images[0],
+                  price: e.price,
+                  category: e.category,
+                  keyFeatures: e.keyFeatures,
+                  description: e.description,
+                  specification: e.specification
+              }
+          })
+          cb(newDoc);
+      } 
+
+       getProduct((product) => {
+          dispatch(setProd(product))
+          dispatch(setLightbox({id: product[1].id, img:product[1].img, price:product[1].price}))
+          console.log(product);
+         
+       })
+
+    
+    }, [])
+
     const checkInc = (num) => {
         if (num === (datas.length - 1)) {
             num = 0;
@@ -83,11 +117,8 @@ const MainCarou = () => {
         return () => window.removeEventListener("resize", handleWindowResize);
     }, [])
 
-    // making carousel active
-    useEffect(() => {
-        setActive(product.id)
-    }, [])
 
+    
 
     // handle lightbox display 
     const clickHandler = (img,id) => {
@@ -96,18 +127,23 @@ const MainCarou = () => {
 
     // adding border on active product
     const setActive = (id) => { // get id
-        // return element with id
-        const imgId = datas.filter(data => data.id === id )
-        // set element with id as active
-        dispatch(setLightbox({id: imgId[0].id, img:imgId[0].img}))
-        // set internal id
+        // // return element with id
+        const imgId = products.filter(e => e.id === id )
+        // // set element with id as active
+        dispatch(setLightbox({id: imgId[0].id, img:imgId[0].img, price:imgId[0].price}))
+        // // set internal id
         setId(imgId[0].id)
         // set internal img
         setImg(imgId[0].img); 
     }
+    if(!products) {
+        return <h1>no data</h1>
+    }
+
+
 
     // carousal list product
-    const smlCarou = datas.map(data => {
+    const smlCarou = products.map(data => {
         // let current element be false
         let current = false
         // find element with active id
@@ -124,6 +160,9 @@ const MainCarou = () => {
             active={current} 
         /> 
     })
+
+    
+   
 
     return (
         <div className="carousel">

@@ -6,8 +6,8 @@ import datas from './../Data/data';
 import { setLightbox } from './../Store/Action/lightboxObjAction';
 
 const ImageController = () => {
-    const activeId = useSelector(state => state.lightboxObjReducer.id)
-    const dispatch = useDispatch()
+    const activeId = useSelector(state => state.lightboxObjReducer.id);
+    const dispatch = useDispatch();
 
     const checkInc = (num) => {
         if (num === (datas.length - 1)) {
@@ -49,8 +49,8 @@ const ImageController = () => {
                 break;
             }
         }
-       let val = checkDec(index)
-       dispatch(setLightbox(datas[val]))
+       let val = checkDec(index);
+       dispatch(setLightbox(datas[val]));
     }
 
     return (

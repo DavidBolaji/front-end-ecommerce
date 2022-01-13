@@ -7,7 +7,23 @@ import { clearCart } from './../Store/Action/cartAction';
 const Cart = () => {
     // const counter = useSelector(state => state.counterReducer)
     const cartState = useSelector(state => state.cartReducer);
+    const authenticate = useSelector(state => state.authReducer);
     const dispatch = useDispatch();
+
+    const removeCart = async () => {
+        const prodId = '60aedf1f719956001508ef1a';
+        dispatch(clearCart())
+        const dataOne = await fetch(`http://localhost:5000/api/v1/cart/deleteCart/${prodId}`, {
+                    method: 'POST',
+                    headers: {
+                        Authorization : `Bearer ${authenticate}`
+                    },
+            
+            })
+        const respOne = await dataOne.json()
+        console.log(respOne);
+       
+    }
     
     return (
         <div className="cart">
@@ -27,7 +43,7 @@ const Cart = () => {
                         <p>Fall Limited Edition Sneakers</p>
                         <p>$125 x {cartState.counter} <b>${cartState.price.toFixed(2)}</b></p>
                     </div>
-                    <div className="item_icon" onClick={() => dispatch(clearCart())}>
+                    <div className="item_icon" onClick={removeCart}>
                         <img src={Trash} alt="shoe" />
                     </div>
                 </div>
