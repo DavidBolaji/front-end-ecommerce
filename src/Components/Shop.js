@@ -18,7 +18,7 @@ const Shop = () => {
     const addCartItem = async () => {
         const prodId = '60aedf1f719956001508ef1a';
         dispatch(addToCart({counter: counter, price: 125 }));
-        const add = await fetch(`http://localhost:5000/api/v1/cart/${prodId}`, {
+        const add = await fetch(`https://treen-api.herokuapp.com/api/v1/cart/${prodId}`, {
                 method: 'POST',
                 headers: {
                     Authorization : `Bearer ${authenticate}`
@@ -31,13 +31,13 @@ const Shop = () => {
 
     const incre = async () => {
 
-        const prodId = '60aedf1f719956001508ef1a'
+        const prodId = '60aedf1f719956001508ef1a';
         dispatch(increment())
        
         const quan = counter+1;
        
        
-        const data = await fetch(`http://localhost:5000/api/v1/cart/update/?id=${prodId}&quantity=${quan}`, {
+        const data = await fetch(`https://treen-api.herokuapp.com/api/v1/cart/update/?id=${prodId}&quantity=${quan}`, {
             method: 'PATCH',
             headers: {
                 Authorization : `Bearer ${authenticate}`
@@ -53,7 +53,7 @@ const Shop = () => {
         dispatch(decrement())
         if(counter > 0) {
             const quan = counter-1;
-            const data = await fetch(`http://localhost:5000/api/v1/cart/update/?id=${prodId}&quantity=${quan}`, {
+            const data = await fetch(`https://treen-api.herokuapp.com/api/v1/cart/update/?id=${prodId}&quantity=${quan}`, {
                 method: 'PATCH',
                 headers: {
                     Authorization : `Bearer ${authenticate}`

@@ -7,6 +7,11 @@ import Sidebar from './Components/Sidebar';
 import { useSelector, useDispatch } from 'react-redux';
 import { auth } from './Store/Action/AuthAction';
 import { setProd } from './Store/Action/productAction';
+import io from 'socket.io-client';
+
+
+
+// const socket = io.connect('http://localhost:5000/')
 
 function App() {
   const dispatch = useDispatch();
@@ -14,7 +19,7 @@ function App() {
   useEffect(() => {
 
       const login = async (cb) => {
-          const data = await fetch('http://localhost:5000/api/v1/users/login', {
+          const data = await fetch(`https://treen-api.herokuapp.com/api/v1/users/login`, {
               method:'POST',
               body: JSON.stringify({
                   email: 'ologunlekodavid245@gmail.com',

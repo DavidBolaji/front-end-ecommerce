@@ -13,7 +13,7 @@ const Cart = () => {
     const removeCart = async () => {
         const prodId = '60aedf1f719956001508ef1a';
         dispatch(clearCart())
-        const dataOne = await fetch(`http://localhost:5000/api/v1/cart/deleteCart/${prodId}`, {
+        const dataOne = await fetch(`https://treen-api.herokuapp.com/api/v1/cart/deleteCart/${prodId}`, {
                     method: 'POST',
                     headers: {
                         Authorization : `Bearer ${authenticate}`

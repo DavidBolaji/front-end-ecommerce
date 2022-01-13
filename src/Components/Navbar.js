@@ -24,7 +24,7 @@ const Navbar = () => {
 
 
     const profile = async () => {
-        const data = await fetch(`http://localhost:5000/api/v1/users/me`, {
+        const data = await fetch(`https://treen-api.herokuapp.com/api/v1/users/me`, {
             headers: {
                 Authorization : `Bearer ${authenticate}`
             },

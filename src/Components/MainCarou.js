@@ -31,7 +31,7 @@ const MainCarou = () => {
     // making carousel active
     useEffect(() => {
         const getProduct = async (cb) => {
-          const data = await fetch('http://localhost:5000/api/v1/products?page=4')
+          const data = await fetch(`https://treen-api.herokuapp.com/api/v1/products?page=4`)
           const resp = await data.json();
           const newDoc = resp.doc.map((e) => {
               return {
